@@ -1,5 +1,8 @@
 package com.example.kakeiboapp;
 
+import static android.content.ContentValues.TAG;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,7 +12,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -21,17 +27,24 @@ import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Account_User extends AppCompatActivity {
     ImageView Home, History, Analytics;
-    Button Logout;
+    Button Logout,Change_Img;
     TextView tvName, UID;
     FirebaseAuth firebaseAuth;
     GoogleSignInClient googleSignInClient;
+    private static final int REQUEST_IMAGE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +56,10 @@ public class Account_User extends AppCompatActivity {
         Home = findViewById(R.id.home);
         History = findViewById(R.id.history);
         Analytics = findViewById(R.id.analytics);
+        Change_Img = findViewById(R.id.change_photo);
         Logout = findViewById(R.id.logout);
+
+
         firebaseAuth = FirebaseAuth.getInstance();
         googleSignInClient = GoogleSignIn.getClient(Account_User.this, GoogleSignInOptions.DEFAULT_SIGN_IN);
 
@@ -63,6 +79,8 @@ public class Account_User extends AppCompatActivity {
             clipboard.setPrimaryClip(clip);
             Toast.makeText(getApplicationContext(), "Account ID copied to clipboard", Toast.LENGTH_SHORT).show();
         });
+
+        Change_Img.setOnClickListener(view ->Change_Photo());
 
     }
 
@@ -177,6 +195,78 @@ public class Account_User extends AppCompatActivity {
         dialog.show();
 
     }
+
+    public void Change_Photo() {
+// Use a file picker or camera to allow the user to select or take a photo
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent, REQUEST_IMAGE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference();
+        StorageReference photoRef = storageRef.child("users/" + user.getUid() + "/photo.jpg");
+
+        if (requestCode == REQUEST_IMAGE && resultCode == RESULT_OK) {
+            // Get the selected image URI
+            Uri selectedImage = data.getData();
+
+            // Check if the photo already exists and delete it if it does
+            photoRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                // The photo exists, so delete it
+                photoRef.delete().addOnSuccessListener(aVoid -> {
+                    // File deleted successfully, upload the new photo
+                    UploadTask uploadTask = photoRef.putFile(selectedImage);
+
+                    // Once the upload is complete, obtain the download URL and update the user's authentication profile
+                    uploadTask.addOnSuccessListener(taskSnapshot -> {
+                        photoRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                        .setPhotoUri(uri)
+                                        .build();
+
+                                user.updateProfile(profileUpdates);
+                                Toast.makeText(getApplicationContext(), "Updating profile picture, please wait...", Toast.LENGTH_SHORT).show();
+                                new Handler().postDelayed(() -> recreate(), 3000);
+                            }
+                        });
+                    });
+                }).addOnFailureListener(e -> {
+                    // Failed to delete the existing photo, log the error
+                    Log.e(TAG, "Error deleting existing photo: " + e.getMessage());
+                });
+            }).addOnFailureListener(e -> {
+                // The photo doesn't exist, so just upload the new photo
+                UploadTask uploadTask = photoRef.putFile(selectedImage);
+
+                // Once the upload is complete, obtain the download URL and update the user's authentication profile
+                uploadTask.addOnSuccessListener(taskSnapshot -> {
+                    photoRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                    .setPhotoUri(uri)
+                                    .build();
+
+                            user.updateProfile(profileUpdates);
+                            Toast.makeText(getApplicationContext(), "Updating profile picture, please wait...", Toast.LENGTH_SHORT).show();
+                            new Handler().postDelayed(() -> recreate(), 3000);
+                        }
+                    });
+                });
+            });
+        }
+    }
+
+
+
 
     public void Home_UserClicked() {
         Intent Intent = new Intent(this,Main_Interface.class);

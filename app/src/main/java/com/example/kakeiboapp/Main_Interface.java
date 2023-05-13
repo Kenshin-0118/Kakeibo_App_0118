@@ -153,7 +153,7 @@ public class Main_Interface extends AppCompatActivity {
                 AddSpendLimit.setVisibility(View.GONE);
             }
         });
-
+        fetchSpends();
 
     }
 
@@ -234,42 +234,44 @@ public class Main_Interface extends AppCompatActivity {
                             setPercentageText(educationPercentage, education_percent);
                             setPercentageText(othersPercentage, others_percent);
 
-                            Query query = db.collection("Spend_limit").whereEqualTo("User_Id", uid).whereEqualTo("Period", monthYear);
-                            query.get().addOnSuccessListener(queryDocumentSnapshots -> {
-                                if (!queryDocumentSnapshots.isEmpty()) {
-                                    DocumentSnapshot documentSnapshot = queryDocumentSnapshots.getDocuments().get(0);
-                                    String SP = documentSnapshot.getString("Spend_Limit");
-                                    Spend_Limit = Double.parseDouble(SP);
-                                    Spend_Max.setText((decimalFormat.format(Spend_Limit)));
-                                    Spend_Max.setVisibility(View.VISIBLE);
-                                    int heightInDp = 3;
-                                    int heightInPixels = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, heightInDp, getResources().getDisplayMetrics());
-                                    AddSpendLimit.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, heightInPixels));
-                                    AddSpendLimit.setEnabled(false);
-                                    HaveLimit = true;
-                                    Spend_Average();
-                                } else {
-                                    Toast.makeText(getApplicationContext(), "Empty result", Toast.LENGTH_SHORT).show();
-                                    gaugeView.setmValue(0);
-                                    gaugeView.setmFillColorEnd(Color.parseColor("#FF4EF123"));
-                                    gaugeView.setmTextColor(Color.parseColor("#FF4EF123"));
-                                    Spend_Max.setVisibility(View.GONE);
-                                    HaveLimit = false;
-                                    int heightInDp = 35;
-                                    int heightInPixels = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, heightInDp, getResources().getDisplayMetrics());
-                                    AddSpendLimit.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, heightInPixels));
-                                    AddSpendLimit.setEnabled(true);
-                                }
-
-                            }).addOnFailureListener(e -> {
-                                displayToast("Spend Max Query Failed");
-                            });
 
                         }
                     } else {
                         Log.e("Firestore Error", task.getException().getMessage());
                     }
                 });
+
+        DecimalFormat decimalFormat = new DecimalFormat("₱#,##0.00");
+        Query query = db.collection("Spend_limit").whereEqualTo("User_Id", uid).whereEqualTo("Period", monthYear);
+        query.get().addOnSuccessListener(queryDocumentSnapshots -> {
+            if (!queryDocumentSnapshots.isEmpty()) {
+                DocumentSnapshot documentSnapshot = queryDocumentSnapshots.getDocuments().get(0);
+                String SP = documentSnapshot.getString("Spend_Limit");
+                Spend_Limit = Double.parseDouble(SP);
+                Spend_Max.setText((decimalFormat.format(Spend_Limit)));
+                Spend_Max.setVisibility(View.VISIBLE);
+                int heightInDp = 3;
+                int heightInPixels = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, heightInDp, getResources().getDisplayMetrics());
+                AddSpendLimit.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, heightInPixels));
+                AddSpendLimit.setEnabled(false);
+                HaveLimit = true;
+                Spend_Average();
+            } else {
+                Toast.makeText(getApplicationContext(), "Empty result", Toast.LENGTH_SHORT).show();
+                gaugeView.setmValue(0);
+                gaugeView.setmFillColorEnd(Color.parseColor("#FF4EF123"));
+                gaugeView.setmTextColor(Color.parseColor("#FF4EF123"));
+                Spend_Max.setVisibility(View.GONE);
+                HaveLimit = false;
+                int heightInDp = 35;
+                int heightInPixels = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, heightInDp, getResources().getDisplayMetrics());
+                AddSpendLimit.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, heightInPixels));
+                AddSpendLimit.setEnabled(true);
+            }
+
+        }).addOnFailureListener(e -> {
+            displayToast("Spend Max Query Failed");
+        });
 
 
     }
@@ -319,7 +321,6 @@ public class Main_Interface extends AppCompatActivity {
 
     protected void onStart() {
         super.onStart();
-        fetchSpends();
 
 
         // Initialize firebase user

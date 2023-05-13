@@ -100,12 +100,29 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="440dp">
+            android:layout_height="404dp"
+            android:layout_marginTop="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" />
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/change_photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_above="@+id/navigation_bar"
+                    android:layout_marginHorizontal="60dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@drawable/bg_user_options"
+                    android:fontFamily="@font/source_sans_pro_semibold_italic"
+                    android:text="Change Profile Picture"
+                    android:textAllCaps="false"
+                    android:textColor="@color/cyan_700"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
         </ScrollView>
 
         <Button
@@ -121,6 +138,20 @@
             android:textAllCaps="false"
             android:textSize="24sp" />
 
+
+        <TextView
+            android:id="@+id/UID3"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:layout_below="@+id/username"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/archivo_bold_italic"
+            android:gravity="center|center_vertical"
+            android:text="V0.1.1.8 (Alpha Build)"
+            android:textColor="@color/cyan_700"
+            android:textSize="10sp" />
 
         <LinearLayout
             android:id="@+id/navigation_bar"
