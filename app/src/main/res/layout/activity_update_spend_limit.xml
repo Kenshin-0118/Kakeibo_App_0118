@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_main"
+    tools:context=".Add_Spend">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp">
+
+        <TextView
+            android:id="@+id/header_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="39dp"
+            android:fontFamily="@font/acme"
+            android:gravity="center"
+            android:text="Update Limit"
+            android:textColor="#FFFFFF"
+            android:textSize="45sp" />
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/back" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/header"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/body_separator"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/open_sans_semibold_italic"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="Failure is a stepping stone to success"
+            android:textColor="#0BCCB8"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/cute"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:fontFamily="@font/baloo_bhaina_2"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="(๑-̀o-́́๑)۶ FIGHT☆"
+            android:textColor="#0BCCB8"
+            android:textSize="36sp" />
+
+        <EditText
+            android:id="@+id/spend_value"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_above="@+id/description"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/edittext_green_border"
+            android:ems="10"
+            android:enabled="false"
+            android:fontFamily="@font/open_sans_italic"
+            android:gravity="center|left"
+            android:hint="Update Spending Limit"
+            android:inputType="numberDecimal"
+            android:padding="5dp"
+            android:paddingStart="10dp"
+            android:textColor="#000000"
+            android:textColorHint="#A6A6A6"
+            android:textSize="22sp" />
+
+        <EditText
+            android:id="@+id/set_limit_amount"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_above="@+id/description"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/edittext_green_border"
+            android:ems="10"
+            android:fontFamily="@font/open_sans_italic"
+            android:gravity="center|left"
+            android:hint="Update Spending Limit"
+            android:inputType="numberDecimal"
+            android:padding="5dp"
+            android:paddingStart="10dp"
+            android:textColor="#000000"
+            android:textColorHint="#A6A6A6"
+            android:textSize="22sp" />
+
+
+        <Button
+            android:id="@+id/set_limit"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="160dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/button_background"
+            android:fontFamily="@font/acme"
+            android:text="Update"
+            android:textAllCaps="false"
+            android:textSize="34sp" />
+
+
+    </LinearLayout>
+
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:padding="125dp"
+        android:visibility="gone" />
+
+</RelativeLayout>

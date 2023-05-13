@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Kakeibo App</string>
+    <string name="period">Period</string>
+    <string name="todo">TODO</string>
+    <string name="kakeibo">Kakeibo</string>
+    <string name="kakeibo_app">Kakeibo App</string>
+
+    <string-array name="Spend_Cat">
+        <item></item>
+        <item>Food and Dining</item>
+        <item>Housing and Utilities</item>
+        <item>Transportation and Travel</item>
+        <item>Personal Care and Health</item>
+        <item>Entertainment and Recreation</item>
+        <item>Clothing and Accessories</item>
+        <item>Education and Learning</item>
+        <item>Others</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

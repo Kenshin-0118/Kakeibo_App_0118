@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_main"
+    tools:context=".Register">
+
+
+    <RelativeLayout
+        android:id="@+id/Header"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp">
+
+
+        <TextView
+            android:id="@+id/header_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="39dp"
+            android:fontFamily="@font/acme"
+            android:gravity="center"
+            android:text="Register"
+            android:textColor="#FFFFFF"
+            android:textSize="48sp"
+            tools:textSize="48sp" />
+
+
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:drawable/list_selector_background"
+            app:srcCompat="@drawable/back" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/Header"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/body_separator"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:id="@+id/user_conf_pass"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/user_password"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/edittext_green_border"
+            android:ems="10"
+            android:gravity="left|center_vertical"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:padding="5dp"
+            android:textColor="#000000"
+            android:textColorHint="#A6A6A6"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/user_password"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/user_email"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/edittext_green_border"
+            android:ems="10"
+            android:gravity="left|center_vertical"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="5dp"
+            android:textColor="#000000"
+            android:textColorHint="#A6A6A6"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/user_email"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/user_name"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="11dp"
+            android:background="@drawable/edittext_green_border"
+            android:ems="10"
+            android:gravity="left|center_vertical"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:padding="5dp"
+            android:textColor="#000000"
+            android:textColorHint="#A6A6A6"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/user_name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/Header"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/edittext_green_border"
+            android:ems="10"
+            android:gravity="center_vertical|left"
+            android:hint="Username"
+            android:inputType="textPersonName"
+            android:padding="5dp"
+            android:textColor="#000000"
+            android:textColorHint="#A6A6A6"
+            android:textSize="24sp" />
+
+
+        <Button
+            android:id="@+id/register"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="200dp"
+            android:background="@drawable/button_background"
+            android:fontFamily="@font/acme"
+            android:text="Register"
+            android:textAllCaps="false"
+            android:textSize="34sp" />
+
+    </LinearLayout>
+
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:padding="125dp"
+        android:visibility="gone" />
+
+</RelativeLayout>

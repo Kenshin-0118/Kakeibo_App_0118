@@ -1,0 +1,729 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_main"
+    tools:context=".Main_Interface">
+
+
+    <RelativeLayout
+        android:id="@+id/Header"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="23dp"
+            android:layout_marginEnd="23dp"
+            android:layout_marginBottom="23dp"
+            android:src="@drawable/default_user_icon"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="2dp"
+            app:civ_circle_background_color="@color/hint" />
+
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginVertical="30sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="100dp"
+        android:fontFamily="@font/inika_bold"
+        android:gravity="top|left"
+        android:text="Welcome Note"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/Header"
+        android:layout_marginTop="-1dp"
+        android:background="@drawable/body_separator"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_below="@+id/Header"
+            android:layout_marginTop="9dp"
+            android:orientation="horizontal">
+
+
+            <com.example.kakeiboapp.SimpleGaugeView
+                android:id="@+id/spendGaugeView"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                app:gaugeView_barColor="#C8C2C2"
+                app:gaugeView_fillColorEnd="#FF4EF123"
+                app:gaugeView_fillColorStart="#FFFFFF"
+                app:gaugeView_labelColor="#016766"
+                app:gaugeView_labelSize="18sp"
+                app:gaugeView_labelText="    "
+                app:gaugeView_maxValue="100"
+                app:gaugeView_minValue="0"
+                app:gaugeView_strokeCap="round"
+                app:gaugeView_textColor="#FF4EF123"
+                app:gaugeView_textSize="24sp"
+                app:gaugeView_value="100" />
+
+            <LinearLayout
+                android:id="@+id/Spend_Ratio"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:id="@+id/spend_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/archivo_bold_italic"
+                    android:gravity="center"
+                    android:maxLength="25"
+                    android:text="₱0.00"
+                    android:textColor="#FF018786"
+                    android:textSize="20sp"
+                    android:visibility="visible" />
+
+                <Button
+                    android:id="@+id/add_spend_limit"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10sp"
+                    android:background="@drawable/add_spend_limit_bg"
+                    android:fontFamily="@font/archivo_bold_italic"
+                    android:text="Set Spend Limit"
+                    android:textAllCaps="false"
+                    android:textSize="20sp"
+                    tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/spend_max"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/archivo_italic"
+                    android:gravity="center"
+                    android:text="₱0.00"
+                    android:textColor="#FF018786"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/update_spend_limit"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10sp"
+                    android:background="@drawable/add_spend_limit_bg"
+                    android:fontFamily="@font/archivo_bold_italic"
+                    android:text="Update Limit"
+                    android:textAllCaps="false"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/categories"
+            android:layout_width="match_parent"
+            android:layout_height="360dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:background="#FFFFFF"
+            tools:ignore="SpeakableTextPresentCheck">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/food_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/dialog_bg"
+                    android:padding="5dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/category_food_img"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/category_food"
+                        app:civ_border_color="@color/teal_700"
+                        app:civ_border_width="2dp"
+                        app:civ_circle_background_color="@color/hint" />
+
+                    <LinearLayout
+                        android:layout_width="220dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:id="@+id/category_food"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/archivo_bold_italic"
+                            android:maxLength="25"
+                            android:text="Food and Dining"
+                            android:textColor="#FF018786"
+                            android:textSize="14sp"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/food_amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/archivo_italic"
+                            android:text="( っ ¯꒳¯ )っ"
+                            android:textColor="#FF018786"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/food_percentage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/archivo_bold_italic"
+                        android:gravity="center"
+                        android:text="ಥ_ಥ"
+                        android:textColor="#FF018786"
+                        android:textSize="16sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/house_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/dialog_bg"
+                    android:padding="5dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/category_house_img"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/category_house"
+                        app:civ_border_color="@color/teal_700"
+                        app:civ_border_width="2dp"
+                        app:civ_circle_background_color="@color/hint" />
+
+                    <LinearLayout
+                        android:layout_width="220dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:id="@+id/category_house"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/archivo_bold_italic"
+                            android:maxLength="25"
+                            android:text="Housing and Utilities"
+                            android:textColor="#FF018786"
+                            android:textSize="14sp"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/house_amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/archivo_italic"
+                            android:text="( っ ¯꒳¯ )っ"
+                            android:textColor="#FF018786"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/house_percentage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/archivo_bold_italic"
+                        android:gravity="center"
+                        android:text="ಥ_ಥ"
+                        android:textColor="#FF018786"
+                        android:textSize="16sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/travel_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/dialog_bg"
+                    android:padding="5dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/category_travel_img"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/category_traveler"
+                        app:civ_border_color="@color/teal_700"
+                        app:civ_border_width="2dp"
+                        app:civ_circle_background_color="@color/hint" />
+
+                    <LinearLayout
+                        android:layout_width="220dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:id="@+id/category_travel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/archivo_bold_italic"
+                            android:maxLength="25"
+                            android:text="Transportation and Travel"
+                            android:textColor="#FF018786"
+                            android:textSize="14sp"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/travel_amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/archivo_italic"
+                            android:text="( っ ¯꒳¯ )っ"
+                            android:textColor="#FF018786"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/travel_percentage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/archivo_bold_italic"
+                        android:gravity="center"
+                        android:text="ಥ_ಥ"
+                        android:textColor="#FF018786"
+                        android:textSize="16sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/health_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/dialog_bg"
+                    android:padding="5dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/category_health_img"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/category_heart"
+                        app:civ_border_color="@color/teal_700"
+                        app:civ_border_width="2dp"
+                        app:civ_circle_background_color="@color/hint" />
+
+                    <LinearLayout
+                        android:layout_width="220dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:id="@+id/category_health"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/archivo_bold_italic"
+                            android:maxLength="25"
+                            android:text="Personal Care and Health"
+                            android:textColor="#FF018786"
+                            android:textSize="14sp"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/health_amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/archivo_italic"
+                            android:text="( っ ¯꒳¯ )っ"
+                            android:textColor="#FF018786"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/health_percentage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/archivo_bold_italic"
+                        android:gravity="center"
+                        android:text="ಥ_ಥ"
+                        android:textColor="#FF018786"
+                        android:textSize="16sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/entertainment_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/dialog_bg"
+                    android:padding="5dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/category_entertainment_img"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/category_entertain"
+                        app:civ_border_color="@color/teal_700"
+                        app:civ_border_width="2dp"
+                        app:civ_circle_background_color="@color/hint" />
+
+                    <LinearLayout
+                        android:layout_width="220dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:id="@+id/category_entertainment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/archivo_bold_italic"
+                            android:maxLength="30"
+                            android:text="Entertainment and Recre..."
+                            android:textColor="#FF018786"
+                            android:textSize="14sp"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/entertainment_amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/archivo_italic"
+                            android:text="( っ ¯꒳¯ )っ"
+                            android:textColor="#FF018786"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/entertainment_percentage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/archivo_bold_italic"
+                        android:gravity="center"
+                        android:text="ಥ_ಥ"
+                        android:textColor="#FF018786"
+                        android:textSize="16sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/clothing_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/category_background"
+                    android:padding="5dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/category_clothing_img"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/category_hoodie"
+                        app:civ_border_color="@color/teal_700"
+                        app:civ_border_width="2dp"
+                        app:civ_circle_background_color="@color/hint" />
+
+                    <LinearLayout
+                        android:layout_width="220dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:id="@+id/category_clothing"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/archivo_bold_italic"
+                            android:maxLength="25"
+                            android:text="Clothing and Accessories"
+                            android:textColor="#FF018786"
+                            android:textSize="14sp"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/clothing_amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/archivo_italic"
+                            android:text="( っ ¯꒳¯ )っ"
+                            android:textColor="#FF018786"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/clothing_percentage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/archivo_bold_italic"
+                        android:gravity="center"
+                        android:text="ಥ_ಥ"
+                        android:textColor="#FF018786"
+                        android:textSize="16sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/education_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/dialog_bg"
+                    android:padding="5dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/category_education_img"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/category_book"
+                        app:civ_border_color="@color/teal_700"
+                        app:civ_border_width="2dp"
+                        app:civ_circle_background_color="@color/hint" />
+
+                    <LinearLayout
+                        android:layout_width="220dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:id="@+id/category_education"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/archivo_bold_italic"
+                            android:maxLength="25"
+                            android:text="Education and Learning"
+                            android:textColor="#FF018786"
+                            android:textSize="14sp"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/education_amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/archivo_italic"
+                            android:text="( っ ¯꒳¯ )っ"
+                            android:textColor="#FF018786"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/education_percentage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/archivo_bold_italic"
+                        android:gravity="center"
+                        android:text="ಥ_ಥ"
+                        android:textColor="#FF018786"
+                        android:textSize="16sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/others_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/dialog_bg"
+                    android:padding="5dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/category_others_img"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/category_others"
+                        app:civ_border_color="@color/teal_700"
+                        app:civ_border_width="2dp"
+                        app:civ_circle_background_color="@color/hint" />
+
+                    <LinearLayout
+                        android:layout_width="220dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:id="@+id/category_others"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/archivo_bold_italic"
+                            android:maxLength="25"
+                            android:text="Others"
+                            android:textColor="#FF018786"
+                            android:textSize="14sp"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/others_amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/archivo_italic"
+                            android:text="( っ ¯꒳¯ )っ"
+                            android:textColor="#FF018786"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/others_percentage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/archivo_bold_italic"
+                        android:gravity="center"
+                        android:text="ಥ_ಥ"
+                        android:textColor="#FF018786"
+                        android:textSize="16sp" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Add_Spend_Container"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <Button
+                android:id="@+id/Add_Spend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:layout_marginEnd="70dp"
+                android:background="@drawable/button_background"
+                android:fontFamily="@font/archivo_bold_italic"
+                android:text="Add Spend"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                app:cornerRadius="50dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navigation_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/button_no"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/home"
+                android:layout_width="90dp"
+                android:layout_height="60dp"
+                app:srcCompat="@drawable/home_selected" />
+
+            <ImageView
+                android:id="@+id/history"
+                android:layout_width="90dp"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/history" />
+
+            <ImageView
+                android:id="@+id/analytics"
+                android:layout_width="90dp"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/analytics" />
+
+            <ImageView
+                android:id="@+id/account"
+                android:layout_width="90dp"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/user" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

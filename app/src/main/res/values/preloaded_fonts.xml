@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/acme</item>
+        <item>@font/adamina</item>
+        <item>@font/amaranth_italic</item>
+        <item>@font/archivo</item>
+        <item>@font/archivo_bold_italic</item>
+        <item>@font/archivo_italic</item>
+        <item>@font/averia_gruesa_libre</item>
+        <item>@font/b612_bold_italic</item>
+        <item>@font/baloo_bhaina_2</item>
+        <item>@font/baloo_tammudu_2_extrabold</item>
+        <item>@font/be_vietnam_semibold_italic</item>
+        <item>@font/inika</item>
+        <item>@font/inika_bold</item>
+        <item>@font/lemon</item>
+        <item>@font/montserrat_subrayada</item>
+        <item>@font/open_sans_italic</item>
+        <item>@font/open_sans_semibold_italic</item>
+        <item>@font/source_sans_pro_semibold_italic</item>
+        <item>@font/source_serif_pro_semibold</item>
+    </array>
+</resources>

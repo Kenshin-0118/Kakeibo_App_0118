@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_main"
+    tools:context=".Add_Spend">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp">
+
+        <TextView
+            android:id="@+id/header_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="39dp"
+            android:fontFamily="@font/acme"
+            android:gravity="center"
+            android:text="Add Spend"
+            android:textColor="#FFFFFF"
+            android:textSize="45sp" />
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/back" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/header"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/body_separator"
+        android:orientation="vertical">
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_above="@+id/food_amount"
+            android:layout_below="@id/header"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="69dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:autofillHints="Category"
+            android:background="@drawable/edittext_green_border"
+            android:paddingLeft="2dp"
+            android:paddingRight="10dp" />
+
+        <EditText
+            android:id="@+id/food_amount"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_above="@+id/description"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/edittext_green_border"
+            android:ems="10"
+            android:gravity="center|left"
+            android:hint="Amount"
+            android:inputType="numberDecimal"
+            android:padding="5dp"
+            android:paddingStart="10dp"
+            android:textColor="#000000"
+            android:textColorHint="#A6A6A6"
+            android:textSize="22sp" />
+
+
+        <EditText
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_above="@+id/submit"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/edittext_green_border"
+            android:ems="10"
+            android:gravity="top|left"
+            android:hint="Description..."
+            android:inputType="textMultiLine"
+            android:padding="5dp"
+            android:paddingStart="10dp"
+            android:textColor="#000000"
+            android:textColorHint="#A6A6A6"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/button_background"
+            android:fontFamily="@font/acme"
+            android:text="Submit"
+            android:textAllCaps="false"
+            android:textSize="34sp"
+            app:cornerRadius="0dp"
+            tools:cornerRadius="30dp" />
+
+
+    </LinearLayout>
+
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:padding="125dp"
+        android:visibility="gone" />
+
+</RelativeLayout>

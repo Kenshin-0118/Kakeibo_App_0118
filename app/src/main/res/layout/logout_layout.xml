@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="30dp"
+    android:background="@drawable/dialog_bg"
+    android:orientation="vertical"
+    android:padding="24dp"
+    app:circularflow_defaultRadius="20dp">
+
+    <TextView
+        android:id="@+id/internet_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/archivo_bold_italic"
+        android:gravity="center"
+        android:text="Are you sure you want to Logout?"
+        android:textColor="#FF018786"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:id="@+id/action_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Header"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/Logout_yes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="#01B3A1"
+            android:fontFamily="@font/acme"
+            android:text="Yes"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            app:cornerRadius="50dp"
+            app:strokeColor="@color/teal_700"
+            app:strokeWidth="1dp"
+            tools:strokeColor="@color/teal_700"
+            tools:strokeWidth="2dp" />
+
+        <Button
+            android:id="@+id/Logout_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/acme"
+            android:text="No"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:cornerRadius="50dp"
+            app:strokeColor="@color/teal_700"
+            app:strokeWidth="1dp"
+            tools:strokeColor="@color/teal_700"
+            tools:strokeWidth="2dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
