@@ -41,6 +41,10 @@
         android:orientation="vertical">
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="595dp"
+            android:orientation="vertical"></LinearLayout>
 
         <LinearLayout
             android:id="@+id/navigation_bar"

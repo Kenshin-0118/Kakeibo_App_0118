@@ -3,6 +3,8 @@ package com.example.kakeiboapp;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -42,18 +44,8 @@ public class Account_User extends AppCompatActivity {
         History = findViewById(R.id.history);
         Analytics = findViewById(R.id.analytics);
         Logout = findViewById(R.id.logout);
-        CircleImageView profileImageView = findViewById(R.id.profile_image);
         firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         googleSignInClient = GoogleSignIn.getClient(Account_User.this, GoogleSignInOptions.DEFAULT_SIGN_IN);
-
-        if (firebaseUser != null) {
-            // When firebase user is not equal to null set image on image view
-            Glide.with(Account_User.this).load(firebaseUser.getPhotoUrl()).placeholder(R.drawable.default_user_icon).into(profileImageView);
-            // set name on text view
-            tvName.setText((firebaseUser.getDisplayName()));
-            UID.setText("User ID: "+(firebaseUser.getUid()));
-        }
 
 
         Home.setOnClickListener(view -> Home_UserClicked());
@@ -63,6 +55,14 @@ public class Account_User extends AppCompatActivity {
         Analytics.setOnClickListener(view -> Analytics_UserClicked());
 
         Logout.setOnClickListener(view -> SignOut());
+
+        UID.setOnClickListener(view -> {
+            String textToCopy = UID.getText().toString();
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("Account ID", textToCopy);
+            clipboard.setPrimaryClip(clip);
+            Toast.makeText(getApplicationContext(), "Account ID copied to clipboard", Toast.LENGTH_SHORT).show();
+        });
 
     }
 
@@ -108,6 +108,16 @@ public class Account_User extends AppCompatActivity {
     }
     protected void onStart() {
         super.onStart();
+
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        CircleImageView profileImageView = findViewById(R.id.profile_image);
+        if (firebaseUser != null) {
+            // When firebase user is not equal to null set image on image view
+            Glide.with(Account_User.this).load(firebaseUser.getPhotoUrl()).placeholder(R.drawable.default_user_icon).into(profileImageView);
+            // set name on text view
+            tvName.setText((firebaseUser.getDisplayName()));
+            UID.setText(firebaseUser.getUid());
+        }
 
         // Check internet connectivity
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);

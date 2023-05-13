@@ -154,8 +154,6 @@ public class Main_Interface extends AppCompatActivity {
             }
         });
 
-        fetchSpends();
-
 
     }
 
@@ -321,6 +319,7 @@ public class Main_Interface extends AppCompatActivity {
 
     protected void onStart() {
         super.onStart();
+        fetchSpends();
 
 
         // Initialize firebase user
@@ -351,6 +350,9 @@ public class Main_Interface extends AppCompatActivity {
             builder.setView(customLayout);
             AlertDialog dialog = builder.create();
 
+            if (progressDialog.isShowing()) {
+                progressDialog.dismiss();
+            }
             // Add a click listener to the "Yes" button
             Ok.setOnClickListener(view -> dialog.dismiss());
             dialog.show();
