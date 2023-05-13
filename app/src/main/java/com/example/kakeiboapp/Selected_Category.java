@@ -34,9 +34,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Selected_Category extends AppCompatActivity implements RecycleviewInterface{
 
-    ArrayList<Spends> SpendList = new ArrayList<>();
+    ArrayList<Spends> SelectedList = new ArrayList<>();
     RecyclerView recycleview;
-    SpendAdapter spendAdapter;
+    SelectedAdapter selectedAdapter;
     FirebaseFirestore db;
     ProgressDialog progressDialog;
     TextView Head;
@@ -65,10 +65,10 @@ public class Selected_Category extends AppCompatActivity implements RecycleviewI
         recycleview = findViewById(R.id.history_view);
         recycleview.setHasFixedSize(true);
         recycleview.setLayoutManager(new LinearLayoutManager(this));
-        SpendList = new ArrayList<>();
-        spendAdapter = new SpendAdapter(Selected_Category.this, SpendList,this);
+        SelectedList= new ArrayList<>();
+        selectedAdapter = new SelectedAdapter(Selected_Category.this, SelectedList,this);
 
-        recycleview.setAdapter(spendAdapter);
+        recycleview.setAdapter(selectedAdapter);
         FetchSpends(Category);
 
         switch (Category) {
@@ -128,9 +128,9 @@ public class Selected_Category extends AppCompatActivity implements RecycleviewI
                                 String description = dc.getDocument().getString("Description");
                                 Date created = dc.getDocument().getDate("Created");
                                 Spends spends= new Spends(description,amount,category,created);
-                                SpendList.add(spends);
+                                SelectedList.add(spends);
                             }
-                            spendAdapter.notifyDataSetChanged();
+                            selectedAdapter.notifyDataSetChanged();
                         }
                     }
 
@@ -177,7 +177,7 @@ public class Selected_Category extends AppCompatActivity implements RecycleviewI
         TextView Description = customLayout.findViewById(R.id.description);
         TextView Datetime = customLayout.findViewById(R.id.datetime);
 
-        switch (SpendList.get(position).getCategory()) {
+        switch (SelectedList.get(position).getCategory()) {
             case "Food and Dining":
                 circleImageView.setImageResource(R.drawable.category_food);
                 break;
@@ -211,10 +211,10 @@ public class Selected_Category extends AppCompatActivity implements RecycleviewI
         AlertDialog.Builder builder = new AlertDialog.Builder(Selected_Category.this, R.style.TransparentDialog);
         builder.setView(customLayout);
         AlertDialog dialog = builder.create();
-        Category.setText(SpendList.get(position).getCategory());
-        Amount.setText(decimalFormat.format(Double.parseDouble(SpendList.get(position).getAmount())));
-        Description.setText(SpendList.get(position).getDescription());
-        Datetime.setText(SpendList.get(position).getCreatedAsString());
+        Category.setText(SelectedList.get(position).getCategory());
+        Amount.setText(decimalFormat.format(Double.parseDouble(SelectedList.get(position).getAmount())));
+        Description.setText(SelectedList.get(position).getDescription());
+        Datetime.setText(SelectedList.get(position).getCreatedAsString());
         dialog.show();
     }
 }
