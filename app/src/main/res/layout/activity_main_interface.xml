@@ -43,7 +43,7 @@
         android:layout_marginVertical="30sp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="100dp"
-        android:fontFamily="@font/inika_bold"
+        android:fontFamily="@font/source_serif_pro_semibold"
         android:gravity="top|left"
         android:text="Welcome Note"
         android:textColor="@android:color/background_light"
@@ -147,10 +147,21 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/Current_Ex"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:fontFamily="@font/archivo_bold_italic"
+            android:gravity="start|center_vertical"
+            android:paddingStart="10dp"
+            android:text="Current Month Expenses:"
+            android:textColor="@color/cyan_700"
+            android:textSize="20sp" />
+
         <ScrollView
             android:id="@+id/categories"
             android:layout_width="match_parent"
-            android:layout_height="360dp"
+            android:layout_height="330dp"
             android:layout_marginStart="2dp"
             android:layout_marginEnd="2dp"
             android:background="#FFFFFF"
@@ -214,6 +225,7 @@
                         android:id="@+id/food_percentage"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@drawable/bg_left_only"
                         android:fontFamily="@font/archivo_bold_italic"
                         android:gravity="center"
                         android:text="ಥ_ಥ"
@@ -277,6 +289,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/archivo_bold_italic"
+                        android:background="@drawable/bg_left_only"
                         android:gravity="center"
                         android:text="ಥ_ಥ"
                         android:textColor="#FF018786"
@@ -338,6 +351,7 @@
                         android:id="@+id/travel_percentage"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@drawable/bg_left_only"
                         android:fontFamily="@font/archivo_bold_italic"
                         android:gravity="center"
                         android:text="ಥ_ಥ"
@@ -403,6 +417,7 @@
                         android:fontFamily="@font/archivo_bold_italic"
                         android:gravity="center"
                         android:text="ಥ_ಥ"
+                        android:background="@drawable/bg_left_only"
                         android:textColor="#FF018786"
                         android:textSize="16sp" />
 
@@ -462,6 +477,7 @@
                         android:id="@+id/entertainment_percentage"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@drawable/bg_left_only"
                         android:fontFamily="@font/archivo_bold_italic"
                         android:gravity="center"
                         android:text="ಥ_ಥ"
@@ -524,6 +540,7 @@
                         android:id="@+id/clothing_percentage"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@drawable/bg_left_only"
                         android:fontFamily="@font/archivo_bold_italic"
                         android:gravity="center"
                         android:text="ಥ_ಥ"
@@ -586,6 +603,7 @@
                         android:id="@+id/education_percentage"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@drawable/bg_left_only"
                         android:fontFamily="@font/archivo_bold_italic"
                         android:gravity="center"
                         android:text="ಥ_ಥ"
@@ -602,6 +620,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@drawable/dialog_bg"
                     android:padding="5dp">
 
@@ -648,6 +667,7 @@
                         android:id="@+id/others_percentage"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@drawable/bg_left_only"
                         android:fontFamily="@font/archivo_bold_italic"
                         android:gravity="center"
                         android:text="ಥ_ಥ"

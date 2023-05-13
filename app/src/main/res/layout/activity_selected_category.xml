@@ -7,32 +7,56 @@
     android:background="@drawable/background_main"
     tools:context=".History">
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/Header"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="150dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="0dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/selected"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/archivo_bold_italic"
+            android:gravity="left|center_vertical"
+            android:text="Current Expenses"
+            android:textColor="@android:color/background_light"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/selected_head2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/source_sans_pro_semibold_italic"
+            android:gravity="left|center_vertical"
+            android:text="Category:"
+            android:textColor="@android:color/background_light"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/selected_head"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="10dp"
-            android:autoSizeMaxTextSize="32sp"
-            android:autoSizeMinTextSize="12sp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginStart="30dp"
             android:autoSizeTextType="uniform"
-            android:fontFamily="@font/source_serif_pro_semibold"
-            android:gravity="center"
-            android:text="Sample\nHeader"
-            android:textColor="@android:color/background_light" />
+            android:fontFamily="@font/source_sans_pro_italic"
+            android:gravity="left|center_vertical"
+            android:text="category"
+            android:textColor="@android:color/background_light"
+            android:textSize="20sp" />
 
 
-    </RelativeLayout>
+    </LinearLayout>
 
 
     <LinearLayout
@@ -47,7 +71,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/history_view"
             android:layout_width="match_parent"
-            android:layout_height="570dp"
+            android:layout_height="540dp"
             android:layout_above="@+id/navigation_bar"
             android:layout_marginTop="20dp" />
 

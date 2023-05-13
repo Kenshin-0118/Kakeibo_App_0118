@@ -41,7 +41,6 @@ public class Update_Spend_Limit extends AppCompatActivity {
 
     EditText Default_limit,Set_amountLimit;
     Button Set_Limit;
-    ImageView Back;
     ProgressBar progressBar;
     FirebaseFirestore db;
     String Limit_Id;
@@ -53,7 +52,6 @@ public class Update_Spend_Limit extends AppCompatActivity {
         Set_amountLimit = findViewById(R.id.set_limit_amount);
         Set_Limit = findViewById(R.id.set_limit);
         Default_limit = findViewById(R.id.spend_value);
-        Back = findViewById(R.id.back);
         progressBar = findViewById(R.id.progressBar);
         db = FirebaseFirestore.getInstance();
 
@@ -100,7 +98,6 @@ public class Update_Spend_Limit extends AppCompatActivity {
 
             }
         });
-        Back.setOnClickListener(view -> finish());
     }
 
     private void displayToast(String s) {

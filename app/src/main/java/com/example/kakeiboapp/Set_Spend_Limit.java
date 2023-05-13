@@ -37,7 +37,6 @@ public class Set_Spend_Limit extends AppCompatActivity {
 
     EditText Set_amountLimit;
     Button Set_Limit;
-    ImageView Back;
     ProgressBar progressBar;
     FirebaseFirestore db;
 
@@ -47,7 +46,6 @@ public class Set_Spend_Limit extends AppCompatActivity {
         setContentView(R.layout.activity_set_spend_limit);
         Set_amountLimit = findViewById(R.id.set_limit_amount);
         Set_Limit = findViewById(R.id.set_limit);
-        Back = findViewById(R.id.back);
         progressBar = findViewById(R.id.progressBar);
         db = FirebaseFirestore.getInstance();
 
@@ -94,7 +92,6 @@ public class Set_Spend_Limit extends AppCompatActivity {
 
             }
         });
-        Back.setOnClickListener(view -> finish());
     }
 
     private void displayToast(String s) {

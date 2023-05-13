@@ -48,6 +48,7 @@ public class Main_Interface extends AppCompatActivity {
     Button add_spend;
     FirebaseAuth firebaseAuth;
     GoogleSignInClient googleSignInClient;
+    CircleImageView profileImageView;
     TextView food_amount, house_amount, travel_amount, health_amount, entertainment_amount,clothing_amount,education_amount,others_amount;
     TextView food_percent, house_percent, travel_percent, health_percent, entertainment_percent,clothing_percent,education_percent,others_percent;
     TextView Spend_Total,Spend_Max;
@@ -74,7 +75,7 @@ public class Main_Interface extends AppCompatActivity {
         gaugeView = findViewById(R.id.spendGaugeView);
 
         // Assign variable
-        CircleImageView profileImageView = findViewById(R.id.profile_image);
+        profileImageView = findViewById(R.id.profile_image);
         tvName = findViewById(R.id.username);
         add_spend = findViewById(R.id.Add_Spend);
         History = findViewById(R.id.history);
@@ -116,17 +117,6 @@ public class Main_Interface extends AppCompatActivity {
 
         // Initialize firebase auth
         firebaseAuth = FirebaseAuth.getInstance();
-
-        // Initialize firebase user
-        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-
-        // Check condition
-        if (firebaseUser != null) {
-            // When firebase user is not equal to null set image on image view
-            Glide.with(Main_Interface.this).load(firebaseUser.getPhotoUrl()).placeholder(R.drawable.default_user_icon).into(profileImageView);
-            // set name on text view
-            tvName.setText(("Welcome\n"+firebaseUser.getDisplayName()));
-        }
 
         food.setOnClickListener(view -> Selected_Cat("Food and Dining"));
         house.setOnClickListener(view -> Selected_Cat("Housing and Utilities"));
@@ -331,6 +321,19 @@ public class Main_Interface extends AppCompatActivity {
 
     protected void onStart() {
         super.onStart();
+
+
+        // Initialize firebase user
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+
+        // Check condition
+        if (firebaseUser != null) {
+            // When firebase user is not equal to null set image on image view
+            Glide.with(Main_Interface.this).load(firebaseUser.getPhotoUrl()).placeholder(R.drawable.default_user_icon).into(profileImageView);
+            // set name on text view
+            tvName.setText(("Welcome\n"+firebaseUser.getDisplayName()));
+        }
+
 
         // Check internet connectivity
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);

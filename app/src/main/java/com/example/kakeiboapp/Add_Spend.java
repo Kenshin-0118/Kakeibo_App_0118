@@ -37,7 +37,6 @@ import java.util.Locale;
 import java.util.Map;
 
 public class Add_Spend extends AppCompatActivity {
-    ImageView backbtn;
     EditText amount, description;
     Button submit;
     private String spinnervalue;
@@ -49,7 +48,6 @@ public class Add_Spend extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_spend);
 
-        backbtn = findViewById(R.id.back);
         amount = findViewById(R.id.food_amount);
         description = findViewById(R.id.description);
         submit = findViewById(R.id.submit);
@@ -87,7 +85,6 @@ public class Add_Spend extends AppCompatActivity {
             return null; // Accept valid input
         };
         amount.setFilters(new InputFilter[]{decimalFilter});
-        backbtn.setOnClickListener(view -> finish());
         submit.setOnClickListener(view -> {
             ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo activeNetwork = cm.getActiveNetworkInfo();

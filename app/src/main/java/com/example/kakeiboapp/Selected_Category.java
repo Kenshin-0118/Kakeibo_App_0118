@@ -69,32 +69,32 @@ public class Selected_Category extends AppCompatActivity implements RecycleviewI
         selectedAdapter = new SelectedAdapter(Selected_Category.this, SelectedList,this);
 
         recycleview.setAdapter(selectedAdapter);
-        FetchSpends(Category);
+        FetchSelected(Category);
 
         switch (Category) {
             case "Food and Dining":
-                Head.setText("Food and Dining Expenses");
+                Head.setText("Food and Dining");
                 break;
             case "Housing and Utilities":
-                Head.setText("Housing and Utilities Expenses");
+                Head.setText("Housing and Utilities");
                 break;
             case "Transportation and Travel":
-                Head.setText("Transportation and Travel Expenses");
+                Head.setText("Transportation and Travel");
                 break;
             case "Personal Care and Health":
-                Head.setText("Personal Care and Health Expenses");
+                Head.setText("Personal Care and Health");
                 break;
             case "Entertainment and Recreation":
-                Head.setText("Entertainment and Recreation Expenses");
+                Head.setText("Entertainment and Recreation");
                 break;
             case "Clothing and Accessories":
-                Head.setText("Clothing and Accessories Expenses");
+                Head.setText("Clothing and Accessories");
                 break;
             case "Education and Learning":
-                Head.setText("Education and Learning Expenses");
+                Head.setText("Education and Learning");
                 break;
             case "Others":
-                Head.setText("Other Expenses");
+                Head.setText("Others");
                 break;
             default:
                 Head.setText("Unidentified Expenses");
@@ -102,7 +102,7 @@ public class Selected_Category extends AppCompatActivity implements RecycleviewI
         }
     }
 
-    public void FetchSpends(String Category){
+    public void FetchSelected(String Category){
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         String uid = mAuth.getCurrentUser().getUid();
         String monthYear = new SimpleDateFormat("MMMM yyyy", Locale.getDefault()).format(Calendar.getInstance().getTime());

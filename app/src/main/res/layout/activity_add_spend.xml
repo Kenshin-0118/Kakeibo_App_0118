@@ -20,21 +20,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginTop="39dp"
-            android:fontFamily="@font/acme"
+            android:fontFamily="@font/amaranth_italic"
             android:gravity="center"
             android:text="Add Spend"
             android:textColor="#FFFFFF"
             android:textSize="45sp" />
-
-        <ImageView
-            android:id="@+id/back"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            app:srcCompat="@drawable/back" />
 
     </RelativeLayout>
 
@@ -50,6 +40,7 @@
             android:id="@+id/spinner"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:fontFamily="@font/open_sans_italic"
             android:layout_above="@+id/food_amount"
             android:layout_below="@id/header"
             android:layout_marginStart="10dp"
@@ -72,6 +63,7 @@
             android:layout_marginBottom="20dp"
             android:background="@drawable/edittext_green_border"
             android:ems="10"
+            android:fontFamily="@font/open_sans_italic"
             android:gravity="center|left"
             android:hint="Amount"
             android:inputType="numberDecimal"
@@ -93,6 +85,7 @@
             android:layout_marginBottom="30dp"
             android:background="@drawable/edittext_green_border"
             android:ems="10"
+            android:fontFamily="@font/open_sans_italic"
             android:gravity="top|left"
             android:hint="Description..."
             android:inputType="textMultiLine"

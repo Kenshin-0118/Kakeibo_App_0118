@@ -32,6 +32,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class History extends AppCompatActivity implements RecycleviewInterface{
     ImageView Home, Analytics, Account_User;
+    TextView Category_head;
     ArrayList<Spends> SpendList = new ArrayList<>();
     ArrayList<Spends> AllRecordList = new ArrayList<>();
     RecyclerView recycleview;
@@ -50,6 +51,7 @@ public class History extends AppCompatActivity implements RecycleviewInterface{
         progressDialog.setMessage("Fetching Data.....");
         progressDialog.show();
 
+        Category_head = findViewById(R.id.selected_head2);
         db = FirebaseFirestore.getInstance();
 
         Home = findViewById(R.id.home);
@@ -81,15 +83,15 @@ public class History extends AppCompatActivity implements RecycleviewInterface{
 
         Account_User.setOnClickListener(view -> Account_UserClicked());
 
-        all.setOnClickListener(view -> {String category = "all";FilterByCategory(category);});
-        food.setOnClickListener(view -> {String category = "Food and Dining";FilterByCategory(category);});
-        house.setOnClickListener(view -> {String category = "Housing and Utilities";FilterByCategory(category);});
-        travel.setOnClickListener(view -> {String category = "Transportation and Travel";FilterByCategory(category);});
-        health.setOnClickListener(view -> {String category = "Personal Care and Health";FilterByCategory(category);});
-        entertainment.setOnClickListener(view -> {String category = "Entertainment and Recreation";FilterByCategory(category);});
-        clothing.setOnClickListener(view -> {String category = "Clothing and Accessories";FilterByCategory(category);});
-        education.setOnClickListener(view -> {String category = "Education and Learning";FilterByCategory(category);});
-        others.setOnClickListener(view -> {String category = "Others";FilterByCategory(category);});
+        all.setOnClickListener(view -> {String category = "All Category";FilterByCategory(category); Category_head.setText(category+":");});
+        food.setOnClickListener(view -> {String category = "Food and Dining";FilterByCategory(category); Category_head.setText(category+":");});
+        house.setOnClickListener(view -> {String category = "Housing and Utilities";FilterByCategory(category); Category_head.setText(category+":");});
+        travel.setOnClickListener(view -> {String category = "Transportation and Travel";FilterByCategory(category); Category_head.setText(category+":");});
+        health.setOnClickListener(view -> {String category = "Personal Care and Health";FilterByCategory(category); Category_head.setText(category+":");});
+        entertainment.setOnClickListener(view -> {String category = "Entertainment and Recreation";FilterByCategory(category); Category_head.setText(category+":");});
+        clothing.setOnClickListener(view -> {String category = "Clothing and Accessories";FilterByCategory(category); Category_head.setText(category+":");});
+        education.setOnClickListener(view -> {String category = "Education and Learning";FilterByCategory(category); Category_head.setText(category+":");});
+        others.setOnClickListener(view -> {String category = "Others";FilterByCategory(category); Category_head.setText(category+":");});
     }
     private void FilterByCategory(String category) {
         ArrayList<Spends> filteredList = new ArrayList<>();
@@ -98,7 +100,7 @@ public class History extends AppCompatActivity implements RecycleviewInterface{
                 filteredList.add(spend);
             }
         }
-        if (category != "all") {
+        if (category != "All Category") {
             SpendList.clear();
             SpendList.addAll(filteredList);
             spendAdapter.notifyDataSetChanged();

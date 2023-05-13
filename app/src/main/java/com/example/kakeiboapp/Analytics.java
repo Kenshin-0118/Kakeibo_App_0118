@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import org.checkerframework.checker.units.qual.A;
+
 public class Analytics extends AppCompatActivity {
     ImageView History, Home, Account_User;
 
@@ -59,6 +61,38 @@ public class Analytics extends AppCompatActivity {
             });
             dialog.show();
         }
+    }
+
+    public void onBackPressed() {
+        LayoutInflater inflater = getLayoutInflater();
+        View customLayout = inflater.inflate(R.layout.close_layout, null);
+
+        Button yesButton = customLayout.findViewById(R.id.yes_button);
+        Button noButton = customLayout.findViewById(R.id.no_button);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(Analytics.this, R.style.TransparentDialog);
+        builder.setView(customLayout);
+        builder.setCancelable(false);
+        AlertDialog dialog = builder.create();
+
+        yesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                finish();
+            }
+        });
+
+        noButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                builder.setCancelable(true);
+            }
+        });
+
+        dialog.show();
+
     }
 
     public void History_UserClicked() {

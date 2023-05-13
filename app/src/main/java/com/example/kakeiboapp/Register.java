@@ -26,7 +26,6 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 
 
 public class Register extends AppCompatActivity {
-    ImageButton back;
     Button Register;
     EditText Username, Email, Password, ConfPass;
     ProgressBar progressBar;
@@ -41,7 +40,6 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        back = findViewById(R.id.back);
         Register = findViewById(R.id.register);
         Username= findViewById(R.id.user_name);
         Email = findViewById(R.id.user_email);
@@ -49,8 +47,6 @@ public class Register extends AppCompatActivity {
         ConfPass = findViewById(R.id.user_conf_pass);
         progressBar = findViewById(R.id.progressBar);
 
-
-        back.setOnClickListener(view -> finish());
 
         Register.setOnClickListener(view -> {
             ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);

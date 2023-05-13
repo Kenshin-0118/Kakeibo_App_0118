@@ -25,7 +25,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="39dp"
-            android:fontFamily="@font/acme"
+            android:fontFamily="@font/amaranth_italic"
             android:gravity="center"
             android:text="Register"
             android:textColor="#FFFFFF"
@@ -33,16 +33,6 @@
             tools:textSize="48sp" />
 
 
-        <ImageButton
-            android:id="@+id/back"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:background="@android:drawable/list_selector_background"
-            app:srcCompat="@drawable/back" />
     </RelativeLayout>
 
 
@@ -59,6 +49,7 @@
             android:id="@+id/user_conf_pass"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:fontFamily="@font/open_sans_italic"
             android:layout_below="@id/user_password"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
@@ -87,6 +78,7 @@
             android:layout_marginEnd="10dp"
             android:background="@drawable/edittext_green_border"
             android:ems="10"
+            android:fontFamily="@font/open_sans_italic"
             android:gravity="left|center_vertical"
             android:hint="Password"
             android:inputType="textPassword"
@@ -107,6 +99,7 @@
             android:layout_marginEnd="11dp"
             android:background="@drawable/edittext_green_border"
             android:ems="10"
+            android:fontFamily="@font/open_sans_italic"
             android:gravity="left|center_vertical"
             android:hint="Email"
             android:inputType="textEmailAddress"
@@ -127,6 +120,7 @@
             android:layout_marginEnd="10dp"
             android:background="@drawable/edittext_green_border"
             android:ems="10"
+            android:fontFamily="@font/open_sans_italic"
             android:gravity="center_vertical|left"
             android:hint="Username"
             android:inputType="textPersonName"
