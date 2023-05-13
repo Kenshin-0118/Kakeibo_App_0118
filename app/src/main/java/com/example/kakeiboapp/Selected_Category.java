@@ -34,7 +34,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Selected_Category extends AppCompatActivity implements RecycleviewInterface{
 
-    ArrayList<Spends> SelectedList = new ArrayList<>();
+    ArrayList<Selected> SelectedList = new ArrayList<>();
     RecyclerView recycleview;
     SelectedAdapter selectedAdapter;
     FirebaseFirestore db;
@@ -127,8 +127,8 @@ public class Selected_Category extends AppCompatActivity implements RecycleviewI
                                 String amount = dc.getDocument().getString("Amount");
                                 String description = dc.getDocument().getString("Description");
                                 Date created = dc.getDocument().getDate("Created");
-                                Spends spends= new Spends(description,amount,category,created);
-                                SelectedList.add(spends);
+                                Selected selected= new Selected(description,amount,category,created);
+                                SelectedList.add(selected);
                             }
                             selectedAdapter.notifyDataSetChanged();
                         }
