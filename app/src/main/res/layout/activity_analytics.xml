@@ -66,6 +66,155 @@
                 android:layout_marginTop="5dp"
                 android:background="@drawable/bg_user_options"
                 android:padding="10dp" />
+
+            <LinearLayout
+                android:id="@+id/summary"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <TextView
+                    android:id="@+id/Period"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/archivo_bold_italic"
+                    android:gravity="center"
+                    android:paddingStart="10dp"
+                    android:text="Monthly Expenses"
+                    android:textColor="@color/cyan_700"
+                    android:textSize="24sp" />
+
+                <LinearLayout
+                    android:id="@+id/username_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/button_no"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="@+id/Logo_container"
+                    tools:layout_editor_absoluteX="20dp">
+
+                    <TextView
+                        android:id="@+id/expense"
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/archivo_bold_italic"
+                        android:gravity="start|center_vertical"
+                        android:text="Expenses:"
+                        android:textColor="@color/teal_700"
+                        android:textSize="23sp"
+                        tools:textColor="@color/teal_700" />
+
+                    <EditText
+                        android:id="@+id/user_expenses"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/bg_left_only"
+                        android:ems="10"
+                        android:enabled="false"
+                        android:fontFamily="@font/source_sans_pro_semibold_italic"
+                        android:gravity="center|center_vertical"
+                        android:hint="Expenses"
+                        android:inputType="textPersonName"
+                        android:padding="5dp"
+                        android:textColor="#00897B"
+                        android:textColorHint="#A6A6A6"
+                        android:textSize="24sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/password_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/button_no"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="@+id/username_container"
+                    tools:layout_editor_absoluteX="20dp">
+
+                    <TextView
+                        android:id="@+id/save"
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/archivo_bold_italic"
+                        android:gravity="start|center_vertical"
+                        android:text="Savings:"
+                        android:textColor="#00897B"
+                        android:textSize="23sp"
+                        tools:textColor="@color/teal_700" />
+
+                    <EditText
+                        android:id="@+id/user_savings"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/user_email"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/bg_left_only"
+                        android:ems="10"
+                        android:enabled="false"
+                        android:fontFamily="@font/source_sans_pro_semibold_italic"
+                        android:gravity="center"
+                        android:hint="Savings"
+                        android:inputType="textPersonName|textEmailAddress"
+                        android:padding="5dp"
+                        android:textColor="#00897B"
+                        android:textColorHint="#A6A6A6"
+                        android:textSize="24sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/user_email" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/action_buttons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#00FFFFFF"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/password_container">
+
+                    <Button
+                        android:id="@+id/view_record"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_marginHorizontal="50dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/login_background"
+                        android:fontFamily="@font/archivo_bold_italic"
+                        android:text="Show Records"
+                        android:textAllCaps="false"
+                        android:textSize="24sp"
+                        app:cornerRadius="50dp"
+                        app:strokeColor="#000000"
+                        app:strokeWidth="1dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout

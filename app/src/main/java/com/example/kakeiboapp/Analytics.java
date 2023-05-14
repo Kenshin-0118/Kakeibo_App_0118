@@ -13,7 +13,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.BarChart;
@@ -35,6 +38,7 @@ import com.google.firebase.firestore.Query;
 
 import org.checkerframework.checker.units.qual.A;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -45,6 +49,7 @@ public class Analytics extends AppCompatActivity {
     ImageView History, Home, Account_User,anal;
     List<MonthlyExpense> monthlyExpenses = new ArrayList<>();
     BarChart chart;
+    LinearLayout Summary;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +60,7 @@ public class Analytics extends AppCompatActivity {
         Home = findViewById(R.id.home);
         Account_User = findViewById(R.id.account);
         anal = findViewById(R.id.analytics);
+        Summary = findViewById(R.id.summary);
 
         History.setOnClickListener(view -> History_UserClicked());
 
@@ -200,18 +206,23 @@ public class Analytics extends AppCompatActivity {
         chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
             @Override
             public void onValueSelected(Entry e, Highlight h) {
+                Summary.setVisibility(View.VISIBLE);
                 BarEntry barEntry = (BarEntry) e;
                 int index = (int) barEntry.getX();
                 MonthlyExpense monthlyExpense = monthlyExpenses.get(index);
-                String message = String.format(Locale.getDefault(),
-                        "%s: Expense=%.2f, Savings=%.2f", monthlyExpense.getPeriod(),
-                        monthlyExpense.getExpense(), monthlyExpense.getSaved());
-                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+                DecimalFormat decimalFormat = new DecimalFormat("₱#,##0.00");
+                TextView period = findViewById(R.id.Period);
+                EditText expenses = findViewById(R.id.user_expenses);
+                EditText savings = findViewById(R.id.user_savings);
+                Button show = findViewById(R.id.view_record);
+                period.setText(monthlyExpense.getPeriod());
+                expenses.setText(decimalFormat.format(monthlyExpense.getExpense()));
+                savings.setText(decimalFormat.format(monthlyExpense.getSaved()));
             }
 
             @Override
             public void onNothingSelected() {
-                // Do nothing
+                Summary.setVisibility(View.GONE);
             }
         });
 
