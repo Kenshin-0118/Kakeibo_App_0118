@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -214,6 +215,13 @@ public class Main_Interface extends AppCompatActivity {
 
                             Spend_Sum = foodTotal + housingTotal + transportationTotal + personalCareTotal + entertainmentTotal + clothingTotal + educationTotal + othersTotal;
 
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Spend_Average();
+                                }
+                            }, 200);
+
                             Spend_Total.setText((decimalFormat.format(Spend_Sum)));
 
                             double foodPercentage = (foodTotal / Spend_Sum) * 100;
@@ -255,7 +263,12 @@ public class Main_Interface extends AppCompatActivity {
                 AddSpendLimit.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, heightInPixels));
                 AddSpendLimit.setEnabled(false);
                 HaveLimit = true;
-                Spend_Average();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Spend_Average();
+                    }
+                }, 200);
             } else {
                 gaugeView.setmValue(0);
                 gaugeView.setmFillColorEnd(Color.parseColor("#FF4EF123"));
