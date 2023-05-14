@@ -218,6 +218,8 @@ public class Analytics extends AppCompatActivity {
                 period.setText(monthlyExpense.getPeriod());
                 expenses.setText(decimalFormat.format(monthlyExpense.getExpense()));
                 savings.setText(decimalFormat.format(monthlyExpense.getSaved()));
+
+                show.setOnClickListener(view -> Selected_Period(monthlyExpense.getPeriod()));
             }
 
             @Override
@@ -292,7 +294,11 @@ public class Analytics extends AppCompatActivity {
                 });
 
     }
-
+    public void Selected_Period(String period){
+        Intent intent = new Intent(this, Selected_Period.class);
+        intent.putExtra("period_key", period);
+        startActivity(intent);
+    }
 
     public void History_UserClicked() {
         Intent Intent = new Intent(this, History.class);
