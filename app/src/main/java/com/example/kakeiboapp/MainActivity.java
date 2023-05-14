@@ -14,10 +14,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -25,8 +27,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
@@ -39,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     GoogleSignInClient googleSignInClient;
     ProgressBar progressBar;
+    TextView forgot;
 
     final ActivityResultLauncher<Intent> GoogleSignInLauncher =
             registerForActivityResult(
@@ -73,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
         btRegister = findViewById(R.id.bt_reg);
         btLogin= findViewById(R.id.bt_login);
         Email = findViewById(R.id.user_email);
+        forgot = findViewById(R.id.forgot_txt);
         Password = findViewById(R.id.user_password);
         progressBar = findViewById(R.id.progressBar);
 
@@ -85,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         googleSignInClient = GoogleSignIn.getClient(MainActivity.this, googleSignInOptions);
 
         btRegister.setOnClickListener(view -> Register());
+        forgot.setOnClickListener(view -> Forgot_Pass());
         btLogin.setOnClickListener(view -> {
             ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
@@ -230,5 +237,45 @@ public class MainActivity extends AppCompatActivity {
                         displayToast("Login Failed: Invalid Credentials" );
                     }
                 });
+    }
+
+    public void Forgot_Pass() {
+        LayoutInflater inflater = getLayoutInflater();
+        View customLayout = inflater.inflate(R.layout.forgot_password_layout, null);
+
+        // Find views in the custom layout
+        EditText Email = customLayout.findViewById(R.id.user_email_add);
+        Button Confirm = customLayout.findViewById(R.id.confirm_button);
+        Button Cancel = customLayout.findViewById(R.id.cancel_button);
+        // Create and show the AlertDialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, R.style.TransparentDialog);
+        builder.setView(customLayout);
+        AlertDialog dialog = builder.create();
+        dialog.setCancelable(false);
+
+        Confirm.setOnClickListener(view -> {
+            if (Email.getText().toString().equals("")){displayToast("Fill all Fields"); return;}
+            if (!android.util.Patterns.EMAIL_ADDRESS.matcher(Email.getText().toString()).matches()){  displayToast("Email Invalid"); return;}
+
+            FirebaseAuth auth = FirebaseAuth.getInstance();
+            String email = Email.getText().toString();
+            auth.sendPasswordResetEmail(email)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                displayToast("Reset email sent!");displayToast(email);
+
+                                dialog.dismiss();
+                            } else {
+                                displayToast("Failed to send reset email");
+                            }
+                        }
+                    });
+        });
+
+        Cancel.setOnClickListener(view -> dialog.dismiss());
+        dialog.show();
+
     }
 }

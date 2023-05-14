@@ -57,7 +57,7 @@ public class Main_Interface extends AppCompatActivity {
     SimpleGaugeView gaugeView;
     ProgressDialog progressDialog;
     FirebaseFirestore db;
-    Double Spend_Sum,Spend_Limit;
+    Double Spend_Sum = 0.00,Spend_Limit = 0.00;
     Boolean HaveLimit;
     LinearLayout food, house, travel, health, entertainment, clothing, education, others;
     @Override
