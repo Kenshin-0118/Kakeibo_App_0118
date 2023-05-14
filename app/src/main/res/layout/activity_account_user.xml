@@ -63,7 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/username"
-            android:layout_marginHorizontal="30dp"
+            android:layout_marginHorizontal="25dp"
             android:layout_marginTop="0dp"
             android:fontFamily="@font/archivo_bold_italic"
             android:gravity="start|center_vertical"
@@ -76,7 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/username"
-            android:layout_marginHorizontal="35dp"
+            android:layout_marginHorizontal="30dp"
             android:layout_marginTop="0dp"
             android:background="@drawable/enclosed_bg"
             android:fontFamily="@font/archivo_italic"
@@ -84,7 +84,7 @@
             android:paddingHorizontal="10dp"
             android:paddingVertical="3dp"
             android:text="User Id"
-            android:textColor="@android:color/background_light"
+            android:textColor="#CCC6C6"
             android:textSize="16sp" />
 
 
@@ -118,6 +118,34 @@
                     android:background="@drawable/bg_user_options"
                     android:fontFamily="@font/source_sans_pro_semibold_italic"
                     android:text="Change Profile Picture"
+                    android:textAllCaps="false"
+                    android:textColor="@color/cyan_700"
+                    android:textSize="24sp" />
+
+                <Button
+                    android:id="@+id/change_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_above="@+id/navigation_bar"
+                    android:layout_marginHorizontal="60dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@drawable/bg_user_options"
+                    android:fontFamily="@font/source_sans_pro_semibold_italic"
+                    android:text="Change Username"
+                    android:textAllCaps="false"
+                    android:textColor="@color/cyan_700"
+                    android:textSize="24sp" />
+
+                <Button
+                    android:id="@+id/change_pass"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_above="@+id/navigation_bar"
+                    android:layout_marginHorizontal="60dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@drawable/bg_user_options"
+                    android:fontFamily="@font/source_sans_pro_semibold_italic"
+                    android:text="Change Password"
                     android:textAllCaps="false"
                     android:textColor="@color/cyan_700"
                     android:textSize="24sp" />

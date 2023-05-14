@@ -257,7 +257,6 @@ public class Main_Interface extends AppCompatActivity {
                 HaveLimit = true;
                 Spend_Average();
             } else {
-                Toast.makeText(getApplicationContext(), "Empty result", Toast.LENGTH_SHORT).show();
                 gaugeView.setmValue(0);
                 gaugeView.setmFillColorEnd(Color.parseColor("#FF4EF123"));
                 gaugeView.setmTextColor(Color.parseColor("#FF4EF123"));

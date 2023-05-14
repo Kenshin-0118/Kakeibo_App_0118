@@ -213,6 +213,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void Login() {
+        progressBar.setVisibility(View.VISIBLE);
         Email = findViewById(R.id.user_email);
         Password= findViewById(R.id.user_password);
         String email = Email.getText().toString();
@@ -226,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
                         finish();
                     } else {
                         progressBar.setVisibility(View.GONE);
-                        displayToast("Login Failed: Credentials Invalid" );
+                        displayToast("Login Failed: Invalid Credentials" );
                     }
                 });
     }
