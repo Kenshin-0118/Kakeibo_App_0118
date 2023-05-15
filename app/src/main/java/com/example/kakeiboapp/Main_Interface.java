@@ -61,10 +61,15 @@ public class Main_Interface extends AppCompatActivity {
     Double Spend_Sum = 0.00,Spend_Limit = 0.00;
     Boolean HaveLimit;
     LinearLayout food, house, travel, health, entertainment, clothing, education, others;
+    Boolean isFirstRun;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_interface);
+
+        Intent intent = getIntent();
+        isFirstRun = intent.getBooleanExtra("isFirstRun_key",false);
 
         db = FirebaseFirestore.getInstance();
 
@@ -263,12 +268,6 @@ public class Main_Interface extends AppCompatActivity {
                 AddSpendLimit.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, heightInPixels));
                 AddSpendLimit.setEnabled(false);
                 HaveLimit = true;
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Spend_Average();
-                    }
-                }, 200);
             } else {
                 gaugeView.setmValue(0);
                 gaugeView.setmFillColorEnd(Color.parseColor("#FF4EF123"));
@@ -314,9 +313,14 @@ public class Main_Interface extends AppCompatActivity {
             } else {
                 percentage = percent;
             }
-            if (percentage >= 75) {
+            if(percentage == 100){
                 gaugeView.setmFillColorEnd(Color.RED);
                 gaugeView.setmTextColor(Color.RED);
+                Limit_Reached();
+            }else if (percentage >= 75) {
+                gaugeView.setmFillColorEnd(Color.RED);
+                gaugeView.setmTextColor(Color.RED);
+                Warning();
             } else if (percentage >= 50) {
                 gaugeView.setmFillColorEnd(Color.parseColor("#FFF38424"));
                 gaugeView.setmTextColor(Color.parseColor("#FFF38424"));
@@ -431,6 +435,50 @@ public class Main_Interface extends AppCompatActivity {
         }
     }
 
+    public void Warning(){
+        if (!isFirstRun) {
+            LayoutInflater inflater = getLayoutInflater();
+            View customLayout = inflater.inflate(R.layout.warning_layout, null);
+
+            // Find views in the custom layout
+            Button Ok = customLayout.findViewById(R.id.close);
+            // Create and show the AlertDialog
+            AlertDialog.Builder builder = new AlertDialog.Builder(Main_Interface.this, R.style.TransparentDialog);
+            builder.setView(customLayout);
+            AlertDialog dialog = builder.create();
+
+            if (progressDialog.isShowing()) {
+                progressDialog.dismiss();
+            }
+            // Add a click listener to the "Yes" button
+            Ok.setOnClickListener(view -> dialog.dismiss());
+            dialog.show();
+            isFirstRun = true;
+        }
+    }
+
+    public void Limit_Reached(){
+        if (!isFirstRun) {
+            LayoutInflater inflater = getLayoutInflater();
+            View customLayout = inflater.inflate(R.layout.limit_reached_layout, null);
+
+            // Find views in the custom layout
+            Button Ok = customLayout.findViewById(R.id.close);
+            // Create and show the AlertDialog
+            AlertDialog.Builder builder = new AlertDialog.Builder(Main_Interface.this, R.style.TransparentDialog);
+            builder.setView(customLayout);
+            AlertDialog dialog = builder.create();
+
+            if (progressDialog.isShowing()) {
+                progressDialog.dismiss();
+            }
+            // Add a click listener to the "Yes" button
+            Ok.setOnClickListener(view -> dialog.dismiss());
+            dialog.show();
+            isFirstRun = true;
+        }
+    }
+
     public void AddSpendClicked() {
         Intent Intent = new Intent(this, Add_Spend.class);
         int requestCode = 123; // any unique request code
@@ -440,6 +488,7 @@ public class Main_Interface extends AppCompatActivity {
     public void History_UserClicked() {
         Intent Intent = new Intent(this, History.class);
         Intent.addFlags(android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        Intent.putExtra("isFirstRun_key", isFirstRun);
         startActivity(Intent);
         finish();
     }
@@ -447,6 +496,7 @@ public class Main_Interface extends AppCompatActivity {
     public void Analytics_UserClicked() {
         Intent Intent = new Intent(this, Analytics.class);
         Intent.addFlags(android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        Intent.putExtra("isFirstRun_key", isFirstRun);
         startActivity(Intent);
         finish();
     }
@@ -454,6 +504,7 @@ public class Main_Interface extends AppCompatActivity {
     public void Account_UserClicked() {
         Intent Intent = new Intent(this, Account_User.class);
         Intent.addFlags(android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        Intent.putExtra("isFirstRun_key", isFirstRun);
         startActivity(Intent);
         finish();
     }

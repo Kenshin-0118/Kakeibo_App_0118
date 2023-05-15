@@ -179,7 +179,7 @@ public class Add_Spend extends AppCompatActivity {
                 .addOnSuccessListener(documentReference -> {
                     progressBar.setVisibility(View.GONE);
                     Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
-                    displayToast("Document added successfully");
+                    displayToast("New Spend Recorded");
                     Intent resultIntent = new Intent();
                     int resultCode = RESULT_OK; // set result code to indicate success
                     setResult(resultCode, resultIntent);

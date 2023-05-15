@@ -46,20 +46,24 @@ import java.util.Locale;
 import java.util.Map;
 
 public class Analytics extends AppCompatActivity {
-    ImageView History, Home, Account_User,anal;
+    ImageView History, Home, Account_User;
     List<MonthlyExpense> monthlyExpenses = new ArrayList<>();
     BarChart chart;
     LinearLayout Summary;
+    Boolean isFirstRun;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_analytics);
 
+        Intent intent = getIntent();
+        isFirstRun = intent.getBooleanExtra("isFirstRun_key",false);
+
+
         History = findViewById(R.id.history);
         Home = findViewById(R.id.home);
         Account_User = findViewById(R.id.account);
-        anal = findViewById(R.id.analytics);
         Summary = findViewById(R.id.summary);
 
         History.setOnClickListener(view -> History_UserClicked());
@@ -68,7 +72,6 @@ public class Analytics extends AppCompatActivity {
 
         Account_User.setOnClickListener(view -> Account_UserClicked());
 
-        anal.setOnClickListener(view ->  Chart());
         FetchForChart();
     }
     protected void onStart() {
@@ -303,6 +306,7 @@ public class Analytics extends AppCompatActivity {
     public void History_UserClicked() {
         Intent Intent = new Intent(this, History.class);
         Intent.addFlags(android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        Intent.putExtra("isFirstRun_key", isFirstRun);
         startActivity(Intent);
         finish();
     }
@@ -310,6 +314,7 @@ public class Analytics extends AppCompatActivity {
     public void Home_UserClicked() {
         Intent Intent = new Intent(this, Main_Interface.class);
         Intent.addFlags(android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        Intent.putExtra("isFirstRun_key", isFirstRun);
         startActivity(Intent);
         finish();
     }
@@ -317,6 +322,7 @@ public class Analytics extends AppCompatActivity {
     public void Account_UserClicked() {
         Intent Intent = new Intent(this, Account_User.class);
         Intent.addFlags(android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        Intent.putExtra("isFirstRun_key", isFirstRun);
         startActivity(Intent);
         finish();
     }

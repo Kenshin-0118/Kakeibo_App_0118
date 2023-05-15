@@ -167,7 +167,7 @@ public class Update_Spend_Limit extends AppCompatActivity {
                 .addOnSuccessListener(aVoid -> {
                     progressBar.setVisibility(View.GONE);
                     Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
-                    displayToast("Document added successfully");
+                    displayToast("Spend limit have been updated");
                     Intent resultIntent = new Intent();
                     int resultCode = RESULT_OK; // set result code to indicate success
                     setResult(resultCode, resultIntent);

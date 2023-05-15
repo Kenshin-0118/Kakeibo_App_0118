@@ -51,11 +51,16 @@ public class Account_User extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     GoogleSignInClient googleSignInClient;
     private static final int REQUEST_IMAGE = 1;
+    Boolean isFirstRun;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_user);
+
+        Intent intent = getIntent();
+        isFirstRun = intent.getBooleanExtra("isFirstRun_key",false);
+
 
         tvName = findViewById(R.id.username);
         UID = findViewById(R.id.UID);
@@ -474,6 +479,7 @@ public class Account_User extends AppCompatActivity {
     public void Home_UserClicked() {
         Intent Intent = new Intent(this,Main_Interface.class);
         Intent.addFlags(android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        Intent.putExtra("isFirstRun_key", isFirstRun);
         startActivity(Intent);
         finish();
     }
@@ -481,6 +487,7 @@ public class Account_User extends AppCompatActivity {
     public void History_UserClicked() {
         Intent Intent = new Intent(this, History.class);
         Intent.addFlags(android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        Intent.putExtra("isFirstRun_key", isFirstRun);
         startActivity(Intent);
         finish();
     }
@@ -488,6 +495,7 @@ public class Account_User extends AppCompatActivity {
     public void Analytics_UserClicked() {
         Intent Intent = new Intent(this, Analytics.class);
         Intent.addFlags(android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        Intent.putExtra("isFirstRun_key", isFirstRun);
         startActivity(Intent);
         finish();
     }

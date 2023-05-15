@@ -149,7 +149,7 @@ public class Set_Spend_Limit extends AppCompatActivity {
                 .addOnSuccessListener(documentReference -> {
                     progressBar.setVisibility(View.GONE);
                     Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
-                    displayToast("Document added successfully");
+                    displayToast("Spend limit have been set");
                     Intent resultIntent = new Intent();
                     int resultCode = RESULT_OK; // set result code to indicate success
                     setResult(resultCode, resultIntent);

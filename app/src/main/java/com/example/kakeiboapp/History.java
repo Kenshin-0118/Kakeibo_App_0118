@@ -40,11 +40,15 @@ public class History extends AppCompatActivity implements RecycleviewInterface{
     FirebaseFirestore db;
     ProgressDialog progressDialog;
     ImageView all, food, house, travel, health, entertainment, clothing, education, others;
+    Boolean isFirstRun;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
+
+        Intent intent = getIntent();
+        isFirstRun = intent.getBooleanExtra("isFirstRun_key",false);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
@@ -206,6 +210,7 @@ public class History extends AppCompatActivity implements RecycleviewInterface{
     public void Home_UserClicked() {
         Intent Intent = new Intent(this, Main_Interface.class);
         Intent.addFlags(android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        Intent.putExtra("isFirstRun_key", isFirstRun);
         startActivity(Intent);
         finish();
     }
@@ -213,6 +218,7 @@ public class History extends AppCompatActivity implements RecycleviewInterface{
     public void Analytics_UserClicked() {
         Intent Intent = new Intent(this, Analytics.class);
         Intent.addFlags(android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        Intent.putExtra("isFirstRun_key", isFirstRun);
         startActivity(Intent);
         finish();
     }
@@ -220,6 +226,7 @@ public class History extends AppCompatActivity implements RecycleviewInterface{
     public void Account_UserClicked() {
         Intent Intent = new Intent(this, Account_User.class);
         Intent.addFlags(android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        Intent.putExtra("isFirstRun_key", isFirstRun);
         startActivity(Intent);
         finish();
     }
